@@ -1,0 +1,58 @@
+<h1>Directives Tutorial</h1>
+
+<h3>Structural directive:</h3>
+<h5>(wpływają na DOM, element nie może mieć wiecej niż jedno)</h5>
+<p><b>*ngif="something"</b>działa trochę jak ukrywanie w bootstrapie albo bulma ale nie ukrywa elementów poprez styl (hidden), ale całkiem je usuwa lub dodaje w zależności od parametru logicznego. gwiazdka (*) w nazwie oznacza, że to zmienia DOM naprawdę</p> 
+
+<div class="example">
+  <div *ngIf="condition">To zniknie w zależności od warunku w ngif: false - anika</div>
+</div>
+
+<div class="example">
+  <div *ngIf="condition; else ifNot"></div>
+  <ng-template #ifNot>
+    <div>To się pojawi jeśli tamto się nie pojawiło, ale nie wykorzystuję się raczej tej składni</div>
+  </ng-template>
+</div>
+<br>
+
+<p><b>*ngFor="let comp of ArrayOfComp"</b>pozwala na tworzenie tylu komponentów ile mamy zadeklarowanych w tablicy. Będzie jakiś lepszy sposób na robienie czegoś takiego</p> 
+
+<div class="example">
+  <div *ngFor="let comp of components">{{ comp }}</div>
+</div>
+
+<p>Możemy także dodać indeks robimy to w taki sposób</p>
+
+<div class="example">
+  <p 
+  [ngStyle]="{backgroundColor: 'green'}"
+  *ngFor="let item of ['tom', 'bart', 'madziaXd']; let i = index">
+  {{ item + ' ' + i}}"
+  </p>
+</div>
+
+<h3>attribute directive:</h3>
+<p><b>ngStyle</b> - częśto używane razem z property binding czyli w taki sposób: [ngStyle]="object js z cssowymi stylami"</p>
+
+<div class="example">
+  <div [ngStyle]="{color: 'green'}">Ten tekst powinien być zielony, kolor przypisany na sztywno przez ngStyle, w miejsce 'green' może być metoda która tworzy kolor</div>
+</div>
+
+<p><b>ngClass</b> działa tak jak zamierzono tylko przy wykorzystaniu data binding pozwala dodawać klasy do htmlowego tagu jeśli selłniony warunek</p>
+
+<div class="example">
+<div [ngClass]="{klasa: true}">Tu będzie dodana klasa z stylem któy zmienia kolor na zielony</div>
+<br>
+
+<p><b>ng-content</b> - nietypowa dyrektywa bo wygląda jak htmlowy element tag. Służy do dodawania elementów kktóre zostały zaaplikowane do ciała naszego komponentu wewnątrz tego komponentu: </p>
+
+<p>ale jeśli w template naszego komponentu damy <ng-content></ng-content> wtedy coś tam będzie w tym miejscu gdzie nasza dyrektywa</p>
+
+<br>
+
+<h3>Customowe dyrektywy</h3>
+<p>możemy je tworzyć za pomocą CLI wpisując komendę: ng g d [nazwa dyrektywy]
+    w konstruktorze podając znienną o typie ElementRef angular przypiszę do niej element do którego przypisaliśmy naszą dyrektywe</p>
+
+</div>

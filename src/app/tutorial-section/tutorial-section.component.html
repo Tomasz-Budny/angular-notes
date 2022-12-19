@@ -1,0 +1,4 @@
+<div class="row">
+    <button class="btn" (click)="isVisible = !isVisible">Zwiń ({{ nameOfSection }})</button>
+    <ng-content *ngIf="isVisible"></ng-content>
+</div>
