@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tutorial-section.component.css']
 })
 export class TutorialSectionComponent {
-  isVisible: boolean = true;
+  isVisible: boolean = false;
   @Input() nameOfSection: string = "";
 }

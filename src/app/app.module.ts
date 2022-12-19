@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { TutorialSectionComponent } from './tutorial-section/tutorial-section.component';
+import { DatabindingComponent } from './databinding/databinding.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectivesComponent,
-    TutorialSectionComponent
+    TutorialSectionComponent,
+    DatabindingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

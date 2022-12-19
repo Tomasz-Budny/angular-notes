@@ -1,0 +1,86 @@
+<h1>Databinding</h1>
+
+<h4>Metody pobierające dane:</h4>
+<ul>
+    <li><b>String interpolation</b> pozwala uzyskać dostęp do danych za pomocą czegoś takiego: {{ data }}</li>
+
+    <li [hidden]="false"><b>property binding</b> - [property]=data pozwala podmieniać dynamicznie atrybuty html (przydatne np jeśli chcemy ustawić wartość disabled buttona)</li>
+</ul>
+
+<h4>Metody przypisujące dane</h4>
+
+<ul>
+    <li (click)="changeColor($event)"><b>event binding</b> (event)=expression - pozwala przypisać metodę do eventu w taki prosty sposób. Jeśli chcemy przekazać argumenty podajemy je w taki sposób: $event</li>
+</ul>
+
+
+<h4>Metody działające w dwie strony</h4>
+
+<ul>
+    <li><b>[(ngModel)]=data</b> - (syntax nazywany czasami banana in the box aby było łatwiej zapamiętać) - jest to dyrektywa można ją przypisać do input. select, textarea eby zadziałało musimy zaimportowć FormsModule do naszego głównego modułu: robimy to dodając go do imports[] oraz powinniśmy zaimportować FormsModule poprzez: import from '@angular/forms'
+    </li>
+</ul>
+
+<!-- <label for="test">Test ngModel</label><br>
+<input [(ngModel)="testNgModel")] type="text" id="test"><br>
+<p>{{ testNgModel }}</p>  z jakiegoś powodu cała apka się psuje jak to dodaje -->
+
+<h3>Custom Databinding</h3>
+<h4>Custom properties</h4>
+<p>możemy tworzyć customowe propertiesy do których będziemy mogli przekazywać dane poprzez property databinding:
+    <br><br>
+    syntax: 
+        - w componencie - dodajemy pole i nakładamy na nie dekorator: @Input(), oraz importujemy z @angular/core
+        teraz nasze po databindingu zostanie nadpisana nasza zmienna
+    możemy również przypisać alias do naszego property (to jak będziemy do niego się zwracać w html attribute) robimy to dodając nazwę do naszego @Input('customowaNazwa')
+    </p>
+
+przykład:
+
+<p>Ten element został przypisany za pomocą atrybutu i ma inną wartość niż ta zadeklarowana w ciele klasy. Wartość wynosi: {{ inputProp }}, a w ciele wynosiła: test</p>
+
+<h4>Custom Events</h4>
+
+<p>
+    możemy tworzyć customowe eventy dodając przed prop decorator @Output(), oraz przypisując do niego new EventEmitter
+</p>
+<p>
+    to jest deklaracja naszego eventu, żeby go wywołać musimy wywołać metodę na prop do której przypisaliśmy EventEmitter wtedy nasz obiekt zostanie wywołany a event jaki przekazał ze sobą możęemy obsłużyć gdzieś indziej korzystając z event bindingu
+</p>
+<p>
+    również i do decoratora @Output możemy przekazać alias pod jakim będzie dostpępny nasz event
+</p>
+
+<h4>Local references</h4>
+
+używane do przekazywania informacji z jednego elementu do drugiego w obrębie template, możęmy potem taką zmienną przekazywać jako argument do metod przypisanych do eventów.
+
+<div #localReference >div #localReference</div> - po takiej deklaracji możemy się odwołać do localreference w innym elemencie html ale tylko w obrębie tego html (nie działa to w ts).
+<br>
+<p>przykład:</p>
+
+
+<button class="btn btn-primary" (click)="localRefTest(local)">TEST LOCAL REF</button>
+<div #local>Tu jest taki tekst, przed naciśnieciem</div>
+
+<h5>Powiązane:</h5>
+
+<ul>
+    <li>
+        <b>@ViewChild()</b> - daje nam dostęp do zwrapppowanego elementu DOM aby opakować w ten sposób element musimy:
+        <ul>
+            <li>
+                - dodać local reference na obiekt
+            </li>
+            <li>
+                - stworzy property z decoratorem @ViewChild('nazwa local ref') możemy określić typ naszej nowej property na ElementRef - nasz wrapper do DOM'a. Dom jest dostępny pod propertą: nativeElement
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <b>@ContentChild()</b> - działa bardzo podobnie lecz daję nam dostęp do elementu DOM z ng-content
+    </li>
+</ul>
+
+przykład:

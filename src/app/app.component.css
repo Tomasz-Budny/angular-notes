@@ -1,6 +1,7 @@
 .title {
     background-color: azure;
     padding: 15px;
+    margin-bottom: 40px;
 }
 
 .row {
@@ -8,4 +9,8 @@
     border-radius: 10px;
     border-color: black;
     border-style: solid;
+}
+
+.container {
+    margin-bottom: 50px;
 }
