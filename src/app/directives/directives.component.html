@@ -1,4 +1,5 @@
 <h1>Directives Tutorial</h1>
+dyrektywy pozwalają dodać trochę interaktywności do naszych komponentów i elementów. W przeciwieństwie do komponentów nie mają template (html'a)
 
 <h3>Structural directive:</h3>
 <h5>(wpływają na DOM, element nie może mieć wiecej niż jedno)</h5>
@@ -27,8 +28,8 @@
 <div class="example">
   <p 
   [ngStyle]="{backgroundColor: 'green'}"
-  *ngFor="let item of ['tom', 'bart', 'madziaXd']; let i = index">
-  {{ item + ' ' + i}}"
+  *ngFor="let item of ['tom', 'bart', 'madziaXd']; let i = index ">
+  {{ item + ' ' + i}}
   </p>
 </div>
 
@@ -56,3 +57,24 @@
     w konstruktorze podając znienną o typie ElementRef angular przypiszę do niej element do którego przypisaliśmy naszą dyrektywe</p>
 
 </div>
+
+przykład:
+<br>
+<div appBasicAttr>Na tym divie została zastosowana nasza dyrektywa customowa zmieniająca kolor tła na zielony.</div>
+<br>
+
+<h4>Renderer2</h4>
+<p>Lepszą praktyką jest dodawanie do konstruktora elementu Renderer2 i zmina DOMu poprzez tą klasę (zobacz better-attr.directive) <a href="https://angular.io/api/core/Renderer2">więcej o Renderer</a></p>
+
+przykład:
+<br>
+<div appBetterAttr>Na tym divie została zastosowana nasza lepsza dyrektywa customowa zmieniająca kolor tła na niebieski.</div>
+<br>
+
+<h3>Host Listener</h3>
+<p>pozwala dodać interaktywności do naszych dyrektyw. aktywować logikę po tym jak zostanie wyemitowany jakiś event (zobacz interactive-attr.directive)</p>
+
+przykład:
+<br>
+<div appInteractiveAttr>Na tym divie została zastosowana interaktywna dyrektywa customowa zmieniająca kolor tła na pomarańczowy jak najedziemy na nią myszką.</div>
+<br>

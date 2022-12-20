@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-databinding',
@@ -29,5 +29,12 @@ export class DatabindingComponent {
   localRefTest(local: HTMLDivElement) {
     console.log(local);
     local.innerText = "Po naciśnieciu jest inny"; // nie powinno się w ten sposób zmieniać DOMu w angular
+  }
+
+  // aby nie wyskakiwał błąd, że nie przypisaliśmy zmiennej musimy ustawić w tsconfig.json strict na false
+  @ViewChild('viewChildTest') vct: ElementRef<HTMLDivElement>;
+
+  viewChildTestFunc() {
+    this.vct.nativeElement.innerText = "Teraz tekst jest inny"; // to jest lepszy sposób na wyłuskanie DOMu ale ciągle nie najlepszy
   }
 }
