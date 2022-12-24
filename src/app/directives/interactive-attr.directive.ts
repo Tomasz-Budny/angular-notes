@@ -1,9 +1,11 @@
-import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appInteractiveAttr]'
 })
 export class InteractiveAttrDirective {
+  // pozwala ustawić w łatwy sposób atrybut/DOM elementu na który nałożymy naszą dyrektywę. Możemy równiez modyfikować naszą prop aby zmienić kolor naszego elementu dynamicznie
+  @HostBinding('style.color') fontColor = 'grey';
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) { }
 

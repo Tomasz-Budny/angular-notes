@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { BasicAttrDirective } from './directives/basic-attr.directive';
 import { BetterAttrDirective } from './directives/better-attr.directive';
 import { InteractiveAttrDirective } from './directives/interactive-attr.directive';
+import { BindingAttrDirective } from './directives/binding-attr.directive';
+import { StructuralDirective } from './directives/structural.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { InteractiveAttrDirective } from './directives/interactive-attr.directiv
     DatabindingComponent,
     BasicAttrDirective,
     BetterAttrDirective,
-    InteractiveAttrDirective
+    InteractiveAttrDirective,
+    BindingAttrDirective,
+    StructuralDirective
   ],
   imports: [
     BrowserModule,

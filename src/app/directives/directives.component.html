@@ -33,6 +33,27 @@ dyrektywy pozwalają dodać trochę interaktywności do naszych komponentów i e
   </p>
 </div>
 
+<p><b>ngSwitch</b> - używane jeśli chcemy wyświetlić tylko i wyłącznie element który ma konkretną wartość a mamy kilka takich elementów</p>
+
+przykład:
+<br>
+<div [ngSwitch]="100">
+  <p *ngSwitchCase="10">Wyświetlona liczba to 10</p>
+  <p *ngSwitchCase="21">Wyświetlona liczba to 21</p>
+  <p *ngSwitchCase="37">Wyświetlona liczba to 37</p>
+  <p *ngSwitchDefault >Wyświetlono domyślną liczbę 69</p>
+</div>
+
+<h5>Jak structural directive działa od kuchni?</h5>
+<p>dyrektywa tak jak np *ngIf jest równoważna czemuś takiemu: ng-template [ngIf]=condition</p>
+
+<div *ngIf="true">normalny sposób w jaki piszemy structural directive</div>
+
+<ng-template [ngIf]="true">
+  <div>W taki sposób działają; obudowują nasz element, elementem ng-template i na niego nakładaja structural directive</div>
+</ng-template>
+<br>
+
 <h3>attribute directive:</h3>
 <p><b>ngStyle</b> - częśto używane razem z property binding czyli w taki sposób: [ngStyle]="object js z cssowymi stylami"</p>
 
@@ -77,4 +98,28 @@ przykład:
 przykład:
 <br>
 <div appInteractiveAttr>Na tym divie została zastosowana interaktywna dyrektywa customowa zmieniająca kolor tła na pomarańczowy jak najedziemy na nią myszką.</div>
+<br>
+
+<h3>Host binding</h3>
+<p>pozwala w łatwiejszy sposób (bez renderera) przypisywać nowe style oraz nadpisywac DOM</p>
+
+przykład:
+<br>
+<div>Zobacz działanie w interactive-attr.directive</div>
+<br>
+
+<h3>Binding to Directive properties</h3>
+<p>mechanizm pozwalający na odwoływanie się do zmiennych/properties dyrektywy za pomocą mechanizmu property binding</p>
+<p>robimy to klasycznie za pomocą dekoratora @Input()</p>
+
+przykład:
+<br>
+<div appBindingAttr="#a8c25d" [directiveProp]="2137">Na ten div została nałożona dyrektywa zmieniająca kolor na taki jaki wybierzemy w prop binding oraz dodająca wybraną przez nas liczbę na koniec. Liczba to: </div>
+<br>
+
+<h3>Customowe structural directives</h3>
+<p>tworzy się je podobnie do zwyczajnych dyrektyw ale z uwagi na to, że będa wywoływane na obiekcie app-template muismy do nich podać * oraz zmienić parametry w konstruktorze</p>
+
+przykład:
+<div *appStructural="false">Na ten div została nałożona customowa strukturalna dyrektywa która działa odwrotnie do ngIf (wyświetla element jeśli warunek to false, a ukrywa jak true)</div>
 <br>
