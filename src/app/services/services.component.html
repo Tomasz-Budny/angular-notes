@@ -1,0 +1,34 @@
+<h1>Serwisy</h1>
+
+<p>Umożliwiaja wydzielenie logiki komponentu do innej klasy (są szczególnie pomocne w sytuacjach takich jak data storage i komunikowanie się między komponentami)</p>
+
+<h3>Tworzenie serwisów</h3>
+<p>Do utworzenie serwisu wystarzczy stworzyć zwykłą ts'owa klasę (zgodnie z konwencją z przyrostkiem Service) oraz ją wyeksportować. Następnie należy ją zajerestrować w kontenerze DI (zobacz przykład)</p>
+
+przykład:
+
+<p>Ten przycisk wywoła metodę displayWarning z BasicService która wyświetli powiadomienie</p>
+<button class="btn btn-primary" (click)="onClick()">Service Test</button>
+<br><br>
+
+<h3>Hierarchical Injector</h3>
+<p>Angularowy DI. Działa w taki sposób, że wstrzykuje konkretną/unikalną instancje danej klasy do komponentu i do wszystkich jego dzieci. Jeśli chchemy mieć jedną klasę do wszystkich komponentów musimy ją wstrzyknąć do appModule</p>
+
+<h4>@Injectable()</h4>
+<p>użyteczne jak chcemy wstrzykiwać serwisy do innych serwisów. Oznaczamy ty matrybutem serwisy do których chcemy wstrzyknąc inny serwis (nie na odwrót na co mogłaby wskazywać nazwa). W nowszych wersjach angulara powinniśmy teoretycznie również dodawać to do serwisów które będziemy wstrzykiwać do innych</p>
+
+<h3>Wstrzykiwanie serwisów do serwisów</h3>
+<p>aby to zrobić musimy zajerestrować nasz serwis w app.module oraz oznaczyć serwis do którego będziemy wstrzykiwać dekoratorem Injectable</p>
+<p>Od angulara 6 możemy to robić również dodając do dekoratora Injectable, co chcemy wstrzyknąc np: @Injectable(provideIn: 'root')</p>
+
+<h3>Przykład użyteczności serwisów</h3>
+<p>użycie serwisów uprościło podzielenie funkcji pomiędzy komponentem dodającym a komponentem odpowiedzialnym za wyświetlanie</p>
+
+<app-create-item></app-create-item>
+
+<app-item 
+*ngFor="let item of items"
+[title]="item.title"
+[content]="item.content">
+</app-item>
+<br>

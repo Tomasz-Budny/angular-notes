@@ -12,6 +12,10 @@ import { BetterAttrDirective } from './directives/better-attr.directive';
 import { InteractiveAttrDirective } from './directives/interactive-attr.directive';
 import { BindingAttrDirective } from './directives/binding-attr.directive';
 import { StructuralDirective } from './directives/structural.directive';
+import { ServicesComponent } from './services/services.component';
+import { ItemComponent } from './services/item/item.component';
+import { CreateItemComponent } from './services/create-item/create-item.component';
+import { ServicesAssignComponent } from './services-assign/services-assign.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { StructuralDirective } from './directives/structural.directive';
     BetterAttrDirective,
     InteractiveAttrDirective,
     BindingAttrDirective,
-    StructuralDirective
+    StructuralDirective,
+    ServicesComponent,
+    ItemComponent,
+    CreateItemComponent,
+    ServicesAssignComponent
   ],
   imports: [
     BrowserModule,

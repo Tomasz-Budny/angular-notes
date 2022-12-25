@@ -1,0 +1,9 @@
+.row {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.create-item {
+    border: 1px solid grey;
+    border-radius: 8px;
+}
