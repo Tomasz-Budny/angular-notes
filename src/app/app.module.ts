@@ -16,6 +16,10 @@ import { ServicesComponent } from './services/services.component';
 import { ItemComponent } from './services/item/item.component';
 import { CreateItemComponent } from './services/create-item/create-item.component';
 import { ServicesAssignComponent } from './services-assign/services-assign.component';
+import { ActiveUsersComponent } from './services-assign/active-users/active-users.component';
+import { InactiveUsersComponent } from './services-assign/inactive-users/inactive-users.component';
+import { CounterService } from './services-assign/counter.service';
+import { ObservablesComponent } from './observables/observables.component';
 
 @NgModule({
   declarations: [
@@ -31,14 +35,17 @@ import { ServicesAssignComponent } from './services-assign/services-assign.compo
     ServicesComponent,
     ItemComponent,
     CreateItemComponent,
-    ServicesAssignComponent
+    ServicesAssignComponent,
+    ActiveUsersComponent,
+    InactiveUsersComponent,
+    ObservablesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
