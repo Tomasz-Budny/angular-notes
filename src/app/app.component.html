@@ -10,12 +10,20 @@
     <app-databinding inputProp="Tom"></app-databinding>
   </app-tutorial-section>
 
-  <app-tutorial-section nameOfSection="Serwisy" [isVisible]="true">
+  <app-tutorial-section nameOfSection="Serwisy" [isVisible]="false">
     <app-services></app-services>
   </app-tutorial-section>
 
   <app-tutorial-section nameOfSection="Serwisy - zadanie">
     <app-services-assign></app-services-assign>
+  </app-tutorial-section>
+
+  <app-tutorial-section nameOfSection="Observables" [isVisible]="false">
+    <app-observables></app-observables>
+  </app-tutorial-section>
+
+  <app-tutorial-section nameOfSection="Formularze" [isVisible]="true">
+    <app-forms></app-forms>
   </app-tutorial-section>
 
 </div>

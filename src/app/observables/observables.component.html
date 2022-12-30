@@ -1,1 +1,79 @@
-<p>observables works!</p>
+
+
+<h1>Observables</h1>
+<p>Jest to sposób angulara na radzenie sobie z asynchronicznością (Coś takiego jak Promise tylko na kodach). Służy między innymi do obsługiwania zapytań http. Aby móc korzystać z observables/tworzyć własne należy skorzystać z roszerzenia do angulara RxJs. Możemy zainstalować za pomocą komendy: <b>npm install rxjs</b></p>
+
+<h3>Różnice między Observables a Promise</h3>
+
+<div class="row">
+    <div class="col">
+        <h4>Promise</h4>
+<ul>
+    <li>jest zawsze synchroniczny</li>
+    <li>Jest eager</li>
+    <li>zwraca tylko jedną wartość</li>
+    <li>nie posiada dedykowanych operatorów</li>
+    <li>nie może być anulowany</li>
+</ul>
+    </div>
+    <div class="col">
+        <h4>Observable</h4>
+<ul>
+    <li>może być synch. i async</li>
+    <li>Jest lazy</li>
+    <li>zwraca jedna lub wiele wartości</li>
+    <li>może byc anulowany</li>
+    <li>lepsza obsługa błedów</li>
+</ul>
+    </div>
+</div>
+
+<h3>Jak działa</h3>
+<p>Observables wysyła paczki z danymi w zależności od tego do czego służy. Paczki z danymi nazywają się Observer (nie jest to najlepiej napisane ale jakoś trzeba było xd)</p>
+
+<p>Na observer składają się trzy elementy:</p>
+<ul>
+    <li>Handle Data - observer.next(value)</li>
+    <li>Handle Error - observer.error(new Error())</li>
+    <li>Handle Completion - observer.complete()</li>
+</ul>
+
+<h3>Wbudowane observables</h3>
+<p><b>interval</b> - RxJs'owy odpowiednik setInterval. W argumencie podajemy czas w milisekundach co ile ma emitować event. Aby przypisać do niego działanie musimy go zasubskrybować dodając po kropce .subscribe(func).</p>
+
+przykład:
+<div class="clock">
+    {{ timer1 }}
+</div>
+<p>ten zegar działa z użyciem interval</p>
+
+<h3>Customowe Observables</h3>
+<p>Obserbvable tworzymy w taki sposób: zobacz component.ts Create jest deprecated</p>
+
+przykład:
+<div class="clock">
+    {{ timer2 }}
+</div>
+<p>ten zegar został stworzony z użyciem customowej observable i js'owej funkcji setInterval</p>
+
+<h4>Next, Error, Complete</h4>
+<p>Poniżej jest przykład wykorzystujący wszystkie elementy observer. Ważne jest, że jak zostanie wyrzucony błąd albo complete to next nie będzie już aktywowane.</p>
+
+
+<h3>Operators</h3>
+<p>pozwalają nam modyfikować dane które odbieramy z observable. Wykorzystujemy je za pomocą metody pipe() wbudowanej w każdy observable, robimy to przed subscribe. 
+</p> 
+
+przykład:
+<p>Message: {{ message$ | async }}</p>
+<button class="btn btn-primary" type="button" (click)="resend()">Resend</button>
+<p>Jest to przykład z dokumentacji angulara</p>
+
+<h3>Subject</h3>
+<p>Jest to temat powiązany z EventEmitter'ami. Trzeba wiedzić, że evenetEmiterry też można subskrybować aby otrzymać wysłane w nich dane po wyemitowaniu. Jednak lepszym sposobem na zrobienie tego jest skorzystanie z klasy Subjecty zdefiniowanej w rxjs. klasa ta daje nam również dostęp tworzenie eventów. Tutaj wykorzystujemy podobną skladnie jak w observables i tak zamiast emit mamy next.</p>
+
+<h3>Pomocne linki</h3>
+<a href="https://rxjs-dev.firebaseapp.com/">dokumentacja RxJs</a><br>
+<a href="https://academind.com/learn/javascript/understanding-rxjs/
+">Seria o RxJs na Academind</a><br>
+<a href="https://academind.com/learn/javascript/rxjs-6-what-changed/">RxJs v6</a><br>

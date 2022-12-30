@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Orbitron';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/orbitron/v25/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6BoWgz.woff2) format('woff2');
+}
+
+.clock {
+    font-family: 'Orbitron';
+    color: #00a324;
+    font-size: 30px;
+}

@@ -20,6 +20,7 @@ import { ActiveUsersComponent } from './services-assign/active-users/active-user
 import { InactiveUsersComponent } from './services-assign/inactive-users/inactive-users.component';
 import { CounterService } from './services-assign/counter.service';
 import { ObservablesComponent } from './observables/observables.component';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ObservablesComponent } from './observables/observables.component';
     ServicesAssignComponent,
     ActiveUsersComponent,
     InactiveUsersComponent,
-    ObservablesComponent
+    ObservablesComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
