@@ -1,0 +1,5 @@
+
+/* angular nakłada klasy na elementy formularza dzięki któym możemy sprytnie nakładać style na elementy któe nie przechodzą walidacji */
+.val-example input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}

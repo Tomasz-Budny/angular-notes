@@ -8,3 +8,144 @@
 
     <li><b>Reactive</b> - bardziej skomplikowane ale dające większy pole popisu jeśli chodzi o customizacje</li>
 </ul>
+
+<p>aby móc korzystać z formularzy musimy zaimportować do app.module FormsModule</p>
+
+<h3>Template-Driven</h3>
+<p>Angularowi do wykrycia formularza wystarczy htmlowy tag form</p>
+
+<p>aby wskazać który input chcemy uwzględnić w przesyłanych danych (form-control) musimy dodać atrybut (dyrektywe) ngModel> Po za tym muismy dodać jescze atrubut name, aby wskazać jak się będzie nazywał nasz element w jsonie.</p>
+
+przykład:
+
+<form>
+    <label for="test"></label>
+    <input 
+      type="text"
+      ngModel
+      id="test"
+      name="test">
+</form>
+<br>
+
+<h4>Submitting forms</h4>
+<p>W tym celu musimy skonfigurować kilka reczy: </p>
+<ul>
+    <li>Stworzyć button z typem submit</li>
+    <li>trzeba nałożyć atrybut ngSbmit</li>
+    <li>Trzeba za pomocą mechanizmu event bindingu przypisać metodę która wykona się po naciśnieciu submi</li>
+    <li>Trzeba przekazać informacje z formularza, najlepiej zrobić to nakładając local reference na form a następnie przypisać do niego ngForm o tak: #f=ngForm</li>
+    <li>Teraz można przekazać naszą local ref jako argument do metody onSubmit, będzie ona typu NgForm</li>
+</ul>
+
+przykład: <br><br>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="onSubmitTest(f)" #f="ngForm">
+            <label for="test"></label>
+            <input 
+              type="text"
+              ngModel
+              id="test"
+              name="test">
+              <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="col">
+        <h5>Wysłane dane:</h5>
+        <p #data></p>
+    </div>
+</div>
+
+<h4>NgForm</h4>
+<p>objekt ten poza value daje całą masę różnych prop które mogą być przydatne podczas tworzenia strony np:</p>
+
+<ul>
+    <li>value - trzyma input</li>
+    <li>dirty - false jeśli nic nie wpisaliśmy/zmieniliśmy do żadnego inputu, true jeśli wpisaliśmy</li>
+    <li>diabled - true jeśli wyłaczony</li>
+    <li>valid/invalid - czy przeszedł walidacje</li>
+    <li>touched - jeśli klikneliśmy; true</li>
+</ul>
+
+<p>możemy również nałożyć na input dyrektywe/atrybut który bęedzie walidował dane np: email</p>
+<a href="https://angular.io/api?query=validator&type=directive" target="_blank">Wbudowane dyrektywy walidujące dostępne w angular</a> <br>
+
+<h4>Validation example</h4>
+<p>W tym przykładzie przycik submit będzie disabled jeśli formularz nie spełnia warunków walidacji (pole email, ma nieprawidłowyy format oraz description jest krótsze niż 5 znaków). Dodatkowo jeśli wpiszemy nieprawidłowe dane ramki inputów zaświecą się na czerwono, a obok nich pojawią się napisy o tym jakie dane należy podać.</p>
+
+<div class="val-example">
+    <form #f2="ngForm">
+        <label for="email">Email</label><br>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          ngModel
+          email
+          required
+          #email="ngModel">
+          <span *ngIf="!email.valid && email.touched"> Podaj właściwy email!</span>
+          <br>
+          <label for="desc">Description</label><br>
+          <input 
+            type="text"
+            id="desc"
+            name="description"
+            ngModel
+            required
+            minlength="5"
+            #desc="ngModel">
+            <span *ngIf="desc.invalid && desc.touched"> Opis powinien mieć przynajmniej 5 znaków!</span>
+            <br>
+            <button 
+              type="submit"
+              [disabled]="f2.invalid">
+              Submit
+            </button>
+    </form>
+</div>
+
+<h4>Default values</h4>
+<p>Możemy ją przypisać wykorzystując prop binding na ngModel: [ngModel]=</p>
+
+<p>Możemy również używać two-way data binding w formularzu. W tym celu trzeba obudować ngModel w banana in the box: [(ngModel)]</p>
+
+<p>przykład</p>
+
+<form>
+    <label for="text">Test: </label>
+    <input 
+      type="text"
+      name="text"
+      id="text"
+      [(ngModel)]="answer">
+</form>
+
+<div>[(ngModel)] test: {{ answer }} </div>
+
+<h4>Grupowanie formularza</h4>
+<p>możemy grupować inputy w grupy które potem zapisywane są jako oddzielne pole w obiekcie jsowym. RObimy to dając obudowując nsze inputy np. divem i dając na niego dyrektywe ngModelGroup albo tworząc local ref w taki sposób #nazwa="ngModelGroup"</p>
+
+<h4>Radio buttons</h4>
+<p>W sumie to nic nadzwyczajnego, angular trochę ułatwie ich tworzenie.</p>
+
+<form>
+    <div class="radio" *ngFor="let gender of ['male', 'female', 'other']">
+        <label>
+            <input 
+              type="radio"
+              name="gender"
+              ngModel
+              [value]="gender">
+              {{ gender }}
+        </label>
+    </div>
+</form>
+
+<h4>Kilka ciekawych rzeczy</h4>
+<p>metoda setValue na obiekcie typu NgForm pozwala ustawiać wartość jaką chcemy (musimy podać js object). patchvalue pozwala nadpisywać konkretne inputy</p>
+
+<p><b>Resetowania formularza</b> aby to zrobić wystarczy na NgForm wywyłać metodę reset()</p>
