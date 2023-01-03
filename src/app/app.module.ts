@@ -21,6 +21,7 @@ import { InactiveUsersComponent } from './services-assign/inactive-users/inactiv
 import { CounterService } from './services-assign/counter.service';
 import { ObservablesComponent } from './observables/observables.component';
 import { FormsComponent } from './forms/forms.component';
+import { FormsAssignComponent } from './forms-assign/forms-assign.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FormsComponent } from './forms/forms.component';
     ActiveUsersComponent,
     InactiveUsersComponent,
     ObservablesComponent,
-    FormsComponent
+    FormsComponent,
+    FormsAssignComponent
   ],
   imports: [
     BrowserModule,
