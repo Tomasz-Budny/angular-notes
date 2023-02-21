@@ -31,7 +31,7 @@
 <p>Możemy wybierać jak nasze pola będą się nazywały. Zależy to od tego jak zdefiniujemy formControlName</p>
 
 <h3>Walidacje</h3>
-<p>Dodajemy je w definicji formularze w typeScriptcie</p>
+<p>Dodajemy je w definicji formularza w typeScriptcie</p>
 
 <p>Przykład: </p>
 
@@ -39,7 +39,6 @@
     <div class="row">
         <div class="col-6">
             <form [formGroup]="testSimpleFormValidation">
-
                 <div class="form-group">
                     <label for="field-1">Te pole jest wymagane</label>
                     <input type="text" id="field-1" formControlName="requiredField" class="form-control">
@@ -60,6 +59,40 @@
                     </span>
                 </div>
 
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<h3>Zagnieżdżone grupy</h3>
+<p>Przykład: </p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form [formGroup]="nestedFormGroups">
+                <div formGroupName="group">
+                    <div class="form-group">
+                        <label for="field-1">Te pole jest wymagane</label>
+                        <input type="text" id="field-1" formControlName="groupField" class="form-control">
+
+                        <span class="help-block" *ngIf="!nestedFormGroups.get('group').get('groupField').valid && 
+                        !nestedFormGroups.get('group').get('groupField').untouched">
+                            Pole wymagane!
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="field-2">To pole jest wymagane i musi być mailem</label>
+                    <input type="text" id="field-2" formControlName="field" class="form-control">
+
+                    <span class="help-block" *ngIf="!nestedFormGroups.get('field').valid && 
+                    !nestedFormGroups.get('field').untouched">
+                        Pole wymagane i musi być mailem!
+                    </span>
+                </div>
 
                 <button type="submit">Submit</button>
             </form>
