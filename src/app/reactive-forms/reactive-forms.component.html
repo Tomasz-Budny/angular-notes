@@ -1,0 +1,68 @@
+<h1>Reactive Forms</h1>
+<p>Daje więcej swobody, tworzymy za pomocą TypeScripta</p>
+<p>Ważny Import w app.module: ReactiveFormsModule // Potrzebne do formularzy Reactive</p>
+
+<p>Przykład: </p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <!-- Tutaj jest nasz formularz -->
+            <form [formGroup]="testReactiveForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" formControlName="username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <input type="text" id="email" formControlName="emailWithTypo" class="form-control">
+                </div>
+                <div class="radio" *ngFor="let gender of genders">
+                    <label>
+                        <input type="radio" formControlName="gender" [value]="gender">{{ gender }}
+                    </label>
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            <!-- Tu się kończy -->
+        </div>
+    </div>
+</div>
+
+<p>Możemy wybierać jak nasze pola będą się nazywały. Zależy to od tego jak zdefiniujemy formControlName</p>
+
+<h3>Walidacje</h3>
+<p>Dodajemy je w definicji formularze w typeScriptcie</p>
+
+<p>Przykład: </p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form [formGroup]="testSimpleFormValidation">
+
+                <div class="form-group">
+                    <label for="field-1">Te pole jest wymagane</label>
+                    <input type="text" id="field-1" formControlName="requiredField" class="form-control">
+
+                    <span class="help-block" *ngIf="!testSimpleFormValidation.get('requiredField').valid && 
+                    !testSimpleFormValidation.get('requiredField').untouched">
+                        Pole wymagane!
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="field-2">To pole jest wymagane i musi być mailem</label>
+                    <input type="text" id="field-2" formControlName="email" class="form-control">
+
+                    <span class="help-block" *ngIf="!testSimpleFormValidation.get('email').valid && 
+                    !testSimpleFormValidation.get('email').untouched">
+                        Pole wymagane i musi być mailem!
+                    </span>
+                </div>
+
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

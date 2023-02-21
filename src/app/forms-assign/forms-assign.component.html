@@ -39,7 +39,7 @@
                   #pass="ngModel"
                   minlength="6">
 
-                  <div *ngIf="pass.invalid && pass.touched">Hasło jest wymagane i musi mieć przynajmniej 6 znaków</div>
+                  <div *ngIf="pass.invalid && pass.touched" class="valid-error">Hasło jest wymagane i musi mieć przynajmniej 6 znaków</div>
                   <br>
                   <button 
                   type="submit"
@@ -49,5 +49,11 @@
                   </button>
             </form>
         </div>
+    </div>
+    <div class="col">
+      <div *ngIf="textAfterSubmit">
+        <h3>Wysłane dane: </h3>
+        {{textAfterSubmit}}
+      </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { from } from 'rxjs';
 
@@ -7,10 +7,11 @@ import { from } from 'rxjs';
   templateUrl: './forms-assign.component.html',
   styleUrls: ['./forms-assign.component.css']
 })
-export class FormsAssignComponent implements OnInit{
+export class FormsAssignComponent implements AfterViewInit{
   @ViewChild('form') form: NgForm;
+  textAfterSubmit: string;
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
     this.form.form.patchValue({subscription: 'advanced'});
   }
 
@@ -19,5 +20,7 @@ export class FormsAssignComponent implements OnInit{
       return;
 
     console.log(this.form.value);
+
+    this.textAfterSubmit = this.form.value.email + ' ' + this.form.value.password + ' ' + this.form.value.subscription; 
   }
 }

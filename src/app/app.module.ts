@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { TutorialSectionComponent } from './tutorial-section/tutorial-section.component';
 import { DatabindingComponent } from './databinding/databinding.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasicAttrDirective } from './directives/basic-attr.directive';
 import { BetterAttrDirective } from './directives/better-attr.directive';
 import { InteractiveAttrDirective } from './directives/interactive-attr.directive';
@@ -22,6 +22,7 @@ import { CounterService } from './services-assign/counter.service';
 import { ObservablesComponent } from './observables/observables.component';
 import { FormsComponent } from './forms/forms.component';
 import { FormsAssignComponent } from './forms-assign/forms-assign.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +43,14 @@ import { FormsAssignComponent } from './forms-assign/forms-assign.component';
     InactiveUsersComponent,
     ObservablesComponent,
     FormsComponent,
-    FormsAssignComponent
+    FormsAssignComponent,
+    ReactiveFormsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule, // Potrzebne do formularzy Template Driven
+    ReactiveFormsModule // Potrzebne do formularzy Reactive
   ],
   providers: [CounterService],
   bootstrap: [AppComponent]
