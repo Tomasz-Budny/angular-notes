@@ -25,6 +25,10 @@ import { FormsAssignComponent } from './forms-assign/forms-assign.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { TestComponent } from './test/test.component';
 import { InnerTestComponent } from './test/inner-test/inner-test.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { PokemonPipe } from './pipes/pokemon.pipe';
+import { ParametrizePipe } from './pipes/parametrize.pipe';
+import { FilterByCategoryPipe } from './pipes/filter-by-category.pipe';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,11 @@ import { InnerTestComponent } from './test/inner-test/inner-test.component';
     FormsAssignComponent,
     ReactiveFormsComponent,
     TestComponent,
-    InnerTestComponent
+    InnerTestComponent,
+    PipesComponent,
+    PokemonPipe,
+    ParametrizePipe,
+    FilterByCategoryPipe
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <h1 class="title">Welcome in Tutorial of Angular</h1>
 
 <div class="container">
-  <app-tutorial-section nameOfSection="Testy" [isVisible]="true">
+  <app-tutorial-section nameOfSection="Testy" [isVisible]="false">
     <app-test></app-test>
   </app-tutorial-section>
 
@@ -33,7 +33,11 @@
     <app-forms-assign></app-forms-assign>
   </app-tutorial-section>
 
-  <app-tutorial-section nameOfSection="Formularze - Reactive" [isVisible]="true">
+  <app-tutorial-section nameOfSection="Formularze - Reactive" [isVisible]="false">
     <app-reactive-forms></app-reactive-forms>
+  </app-tutorial-section>
+
+  <app-tutorial-section nameOfSection="Pipes" [isVisible]="true">
+    <app-pipes></app-pipes>
   </app-tutorial-section>
 </div>

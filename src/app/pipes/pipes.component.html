@@ -1,0 +1,68 @@
+<h1>Pipes</h1>
+
+<p>Tutaj rozumiane jako te zmienianie formatu wyświetlanych danych, raczej nie będzie tu nic o pipe jako metodzie do Observable</p>
+
+<h3>Przykładowe zastosowania</h3>
+
+<p>{{ 'Zmienia na wielkie litery' | uppercase }}</p>
+
+<p>{{ 'ZMIENIA NA MAŁE LITERY' | lowercase }}</p>
+
+<p>formatuje date {{ testDate | date: 'fullDate' }} </p>
+
+<a href="https://angular.io/guide/pipes">Wbudowane pipes w Angularze</a>
+
+<h3>Chaining pipes</h3>
+
+<p>Możemy łączyć pipes aby osiągnąć wynik w jednej linii. <br> wykonywane są od lewej do prawej</p>
+
+<p>przykład: </p>
+
+<p>{{ testDate | date: 'fullDate' | uppercase }}</p>
+
+<h3>Custom pipe</h3>
+
+<p>możemy tworzyć customowe. Trzeba pamiętać aby zachwować zasadę pipe i nie zmieniać w transform pierwotnych danych.</p>
+
+<p>Customowe pipe też deklarujemy w ngModule</p>
+
+<p>Przykłady: </p>
+
+<p>{{ testCustomPipe1 | pokemon }}</p>
+
+<p>{{ testCustomPipe2 | parametrize:1:'kto czytał ten trąba' }}</p>
+
+<h3>Ciekawsze zastosowania pipes (pure i impure pipes)</h3>
+
+<p>ustawienie atrybutu pure na false sprawia, że pipe będzie aktywowany za każdym razem jak dane do których jest podłączony zostaną zmienione. Defaultowo jest ustawiony na true.</p>
+
+<p>Przykład: </p>
+
+<div class="form-group">
+    <label for="category">Wybierz kategorie (dostępne TV, Internet)</label>
+    <input type="text" id="category" class="form-control" [(ngModel)]="category">
+</div>
+<br>
+
+<!-- To ma duży wpływ na performance. Nie wiem czy jest sens tego używać -->
+<div *ngFor="let service of services | filterByCategory:category ">
+    <div class="service">
+        <span>{{service.category}}</span>
+        <p>{{service.name}}</p>
+    </div>
+</div>
+
+<h3>Async Pipe</h3>
+
+<p>wbudowany pipe który po tym jak Promise albo observable zostanie resolve wyświetla dane</p>
+
+<p>Przykład: </p>
+
+<p>{{ asyncPipeTestPromise | async }}</p>
+
+<p>{{ asyncPipeTestObservable | async }}</p>
+
+<!-- To jest lepsze podejście niż to co implementowałem do tej pory. Czuli tworzenie lokalnych zmiennych i subskrybowanie do nich. -->
+<div *ngIf="(asyncPipeTestObservableObject | async); let service">
+<p>{{service.name}}</p>
+</div>

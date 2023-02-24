@@ -1,6 +1,6 @@
 import { AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn } from "@angular/forms";
-import { interval, Observable, Observer } from "rxjs";
-import { debounce, debounceTime, distinctUntilChanged, first, map, switchMap, timeout } from "rxjs/operators";
+import { Observable } from "rxjs";
+import { debounceTime, first, map, switchMap } from "rxjs/operators";
 
 export function doesntHaveAnyPolishProfanities(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {

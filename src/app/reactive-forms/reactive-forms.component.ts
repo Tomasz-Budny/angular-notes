@@ -46,7 +46,7 @@ export class ReactiveFormsComponent implements OnInit {
       nick: new FormControl('', doesntHaveAnyPolishProfanities()),
       small: new FormControl('', containsOnlyLowerCaseLetters()),
       // async validator idzie jako 3 argument
-      asyncField: new FormControl('', [], NickisUnique(1000))
+      asyncField: new FormControl(null, [], NickisUnique(1000))
     });
   }
 
