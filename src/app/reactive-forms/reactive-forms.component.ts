@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { containsOnlyLowerCaseLetters, doesntHaveAnyPolishProfanities, NickisUnique } from './custom-validators';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -9,10 +10,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ReactiveFormsComponent implements OnInit {
   genders = ['male', 'female'];
   testReactiveForm: FormGroup;
-
   testSimpleFormValidation: FormGroup;
-
   nestedFormGroups: FormGroup;
+  formArraytest: FormGroup;
+  formCustomValidators: FormGroup;
 
   ngOnInit(): void {
     this.testReactiveForm = new FormGroup({
@@ -34,6 +35,29 @@ export class ReactiveFormsComponent implements OnInit {
       }),
       field: new FormControl(null, [Validators.required, Validators.email])
     });
+
+    // test FormArray
+    this.formArraytest = new FormGroup({
+      members: new FormArray([])
+    })
+
+    //test custom Validators
+    this.formCustomValidators = new FormGroup({
+      nick: new FormControl('', doesntHaveAnyPolishProfanities()),
+      small: new FormControl('', containsOnlyLowerCaseLetters()),
+      // async validator idzie jako 3 argument
+      asyncField: new FormControl('', [], NickisUnique(1000))
+    });
+  }
+
+  get members() {
+    const members = <FormArray>this.formArraytest.get('members');
+    return members;
+  }
+
+  onAddMemmber() {
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.formArraytest.get('members')).push(control);
   }
   
   onSubmit() {

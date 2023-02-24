@@ -1,0 +1,5 @@
+<div *ngFor="let subscriber of subscribers">
+    <app-inner-test [title]="subscriber.name"></app-inner-test>
+</div>
+
+<button (click)="changeValue()">Zamiana</button>

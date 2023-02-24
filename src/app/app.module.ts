@@ -23,6 +23,8 @@ import { ObservablesComponent } from './observables/observables.component';
 import { FormsComponent } from './forms/forms.component';
 import { FormsAssignComponent } from './forms-assign/forms-assign.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { TestComponent } from './test/test.component';
+import { InnerTestComponent } from './test/inner-test/inner-test.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     ObservablesComponent,
     FormsComponent,
     FormsAssignComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    TestComponent,
+    InnerTestComponent
   ],
   imports: [
     BrowserModule,

@@ -99,3 +99,72 @@
         </div>
     </div>
 </div>
+
+<h3>FormArray</h3>
+
+<p>Dzięki temu mechanizmowi możemy dynamicznie dodawać pola do formularza</p>
+
+<p>przykład: </p>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="formArraytest">
+                <div formArrayName="members">
+                    <button (click)="onAddMemmber()">Add new member</button>
+                    <div 
+                      class="form-group"
+                      *ngFor="let member of members.controls; let i = index">
+                    <input type="text" class="form-control"
+                    [formControlName]="i" >
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<h3>Custom Validators i Asynchronous Validators</h3>
+<p>Możemy tworzyć własne reguły walidacji</p>
+
+<p>async validators jak sama nazwa wskazuje działają aynchronicznie. Mogą być użyte np. jeśli chcemy zobaczyć czy email jest użyty albo nick, w tym celu musimy zapytać serwera.</p>
+
+<p>Przykład: </p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form [formGroup]="formCustomValidators">
+                <div class="form-group">
+                    <label for="nick">To pole nie może zawierać przekleństw</label>
+                    <input type="text" id="nick" formControlName="nick" class="form-control">
+                </div>
+                <div class="help-block" *ngIf="formCustomValidators.get('nick').errors?.['profanity']">
+                    Franklinie wiesz, że nie lubie słowa kurwa
+                </div>
+
+                <div class="form-group">
+                    <label for="small">To pole może zawierać tylko małe litery</label>
+                    <input type="text" id="small" formControlName="small" class="form-control">
+                </div>
+                <div class="help-block" *ngIf="formCustomValidators.get('small').invalid">
+                    Powinno zawierać tylko małe litery!
+                </div>
+
+                <div class="form-group">
+                    <label for="asyncField">Asynchroniczny walidator, zwróci wynik walidacji po ustalonym czasie. invalid jeśli wpiszemy Tomo</label>
+                    <input type="text" id="asyncField" formControlName="asyncField" class="form-control">
+                </div>
+                <div class="help-block" *ngIf="formCustomValidators.get('asyncField').errors?.['nickNotUnique']">
+                    Podany nick: {{formCustomValidators.get('asyncField').errors?.['nickNotUnique']}} nie jest unikalny!
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<h3>Reagowanie na zmiane wartości bądź statusu</h3>
+
+<p>Możemy to robić choćby za pomocą zmiennej valueChanges dostępnej na formulazu reactive. zmienna ta to observable który możemy zasubskrybować. Taka zmienna dostępna jest zarówno na FormGroup jak i FormControl (na FormArray zapewne też).</p>
+
+<p>Dostępne są również metody setValue oraz patchValue. Dla przypomnienia: setValue zmienia wszystkie wartości formularza a patchValue tylko wskazane przez nas.</p>
