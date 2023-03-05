@@ -29,6 +29,9 @@ import { PipesComponent } from './pipes/pipes.component';
 import { PokemonPipe } from './pipes/pokemon.pipe';
 import { ParametrizePipe } from './pipes/parametrize.pipe';
 import { FilterByCategoryPipe } from './pipes/filter-by-category.pipe';
+import { HttpRequestsComponent } from './http-requests/http-requests.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AuthInterceptor } from './http-requests/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -56,15 +59,23 @@ import { FilterByCategoryPipe } from './pipes/filter-by-category.pipe';
     PipesComponent,
     PokemonPipe,
     ParametrizePipe,
-    FilterByCategoryPipe
+    FilterByCategoryPipe,
+    HttpRequestsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, // Potrzebne do formularzy Template Driven
-    ReactiveFormsModule // Potrzebne do formularzy Reactive
+    ReactiveFormsModule, // Potrzebne do formularzy Reactive
+    HttpClientModule,
   ],
-  providers: [CounterService],
+  providers: [CounterService, 
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  } // możemy dodawać kolejne interceptors. Kolejność ma znaczenie ponieważ będzie to kolejność w jakiej będą wykonywane
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
