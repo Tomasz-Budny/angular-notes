@@ -5,6 +5,6 @@ const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule] // ## EXPORTS - tutaj deklarujemy jakie moduły chcemy wyekspotować - udostępnić innym modułom
 })
 export class AppRoutingModule { }

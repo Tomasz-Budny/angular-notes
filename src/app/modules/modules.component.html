@@ -1,0 +1,37 @@
+<h1>Moduły - optymalizowanie aplikacji</h1>
+
+<p>W tym rozdziale pewnie nie będzie wiele rzeczy praktycznych - głównie opisy różnych funkcjonalności angularowych modułów</p>
+
+<p>Modułów używa się głównie w większych aplikacjach w celach optymalizacyjnych.</p>
+
+<span>Każdy moduł:</span>
+<ul>
+    <li>Declarations - tutaj podajemy deklaracje komponentów których używamy w naszym module (Komponenty, pipe'y)</li>
+    <li>Import - tutaj podajemy moduły które chcemy zaimportować do projektu</li>
+    <li>Providers - podajemy serwisy</li>
+    <li>Export - klasy jakie chcemy wyeksportować</li>
+</ul>
+
+<p>
+    <b>BrowserModule</b> - go możemy zaimportować tylko raz, w "głównym" module.<br>
+    W pozostałych modułach powinniśmy używać: <b>CommonModule</b>
+</p>
+
+<p>
+    Możemy również przenosić (a nawet powinniśmy z tego co zrozumiałem) routing do oddzielnych modułów. Możęmy utworzyć nowy moduł routingowy i dać w nim w importach: [RouterModule.forChild(routes)] 
+</p>
+
+<p>
+    <b>Ważne!</b> Nie możemy deklarować komponentu więcej niż w jednym odule inczej będzie rzucało błędami.
+</p>
+
+<p>
+    <b>CoreModule</b> - Powinno się tam providować serwisy, aczkolwiek nie jest to wymagane - można je również wprowadzać poprzez provideIn: root parametr.
+</p>
+
+<article>
+    <h2>Lazy loading</h2>
+    <p>Pozwala przyspieszyć - zoptymalizować aplikację. Działa to w taki sposób, że aplikacja ładuje tylko ten komponent który jest wymagane w tym momencie.</p>
+</article>
+
+ 

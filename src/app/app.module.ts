@@ -32,9 +32,10 @@ import { FilterByCategoryPipe } from './pipes/filter-by-category.pipe';
 import { HttpRequestsComponent } from './http-requests/http-requests.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptor } from './http-requests/auth.interceptor';
+import { ModulesComponent } from './modules/modules.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ // Tutaj deklarujemy moduły jakie mamy
     AppComponent,
     DirectivesComponent,
     TutorialSectionComponent,
@@ -60,16 +61,17 @@ import { AuthInterceptor } from './http-requests/auth.interceptor';
     PokemonPipe,
     ParametrizePipe,
     FilterByCategoryPipe,
-    HttpRequestsComponent
+    HttpRequestsComponent,
+    ModulesComponent
   ],
-  imports: [
+  imports: [ // ## IMPORTS - tutaj dodajemy importy do innych modułów
     BrowserModule,
     AppRoutingModule,
     FormsModule, // Potrzebne do formularzy Template Driven
     ReactiveFormsModule, // Potrzebne do formularzy Reactive
-    HttpClientModule,
+    HttpClientModule, // potrzebne do działania usług http
   ],
-  providers: [CounterService, 
+  providers: [CounterService, // ## PROVIDERS - tutaj dodajemy serwisy
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
