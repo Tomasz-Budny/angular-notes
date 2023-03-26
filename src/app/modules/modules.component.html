@@ -31,7 +31,29 @@
 
 <article>
     <h2>Lazy loading</h2>
-    <p>Pozwala przyspieszyć - zoptymalizować aplikację. Działa to w taki sposób, że aplikacja ładuje tylko ten komponent który jest wymagane w tym momencie.</p>
+    <p>
+        Pozwala przyspieszyć - zoptymalizować aplikację. Działa to w taki sposób, że aplikacja ładuje tylko ten komponent który jest wymagane w tym momencie.
+        <br>
+        Więcej na ten temat (właściwa implementacja itd) w repozytorium lazy-loading-demo.
+    </p>
+</article>
+
+<article>
+    <h2>Serwisy w modułach - ich scope</h2>
+    <p>Serwisy możemy deklarować na kilka sposobów:</p>
+    <ul>
+        <li>
+            <b>W App module</b> - wtedy jedna singletonowa instancja dostępna jest w całej aplikacji w każdym module. To samo jak dodamy dekorator Injectable z param provideIn: root
+        </li>
+        <li>
+            <b>W komponencie</b> - za pomocą dekoratora Component i parametru providers: [SomeService]. wtedy będzie dostępny w komponent tree?
+        </li>
+        <li>
+            <b>W module dodanym z importu</b> - będzie dostępny app-wide - dla wszystkich modułów.
+        </li>
+        <li>Lazy loaded module</li> - dostępny tylko w tym module.
+    </ul>
+    <p>Moduły powinny być dodawane (w większości przypadków) za pomocą provideIn: root albo w providerach w app.module.</p>
 </article>
 
  
