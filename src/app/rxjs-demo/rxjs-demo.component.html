@@ -40,7 +40,6 @@
 <article>
     <h2>Combine Latest</h2>
     <p>Przykład:</p>
-
     <p *ngFor="let value of combineLatestDemo | async">
         {{ value }}
     </p>
@@ -59,13 +58,13 @@
     <h3>ReplaySubject
     </h3>
     <p>Specjalny rodzaj subjecta. pozwala wysłać określoną ilość zapisanych nexttów/wartości do subsktrybenta który zasubskrybował po tym jak kilka takich wartości zostało wyemitowanych. Możemy również określić jak stare mogą być maksymalnie wartości które chcemy wysłać (zobacz w dokumentacji).</p>
-    <button (click)="onReplaySubjectTest()">BehaviorSubject Test</button>
+    <button (click)="onReplaySubjectTest()">ReplaySubject Test</button>
     <hr>
 
     <h3>AsyncSubject
     </h3>
     <p>Specjalny rodzaj subjecta, który wysyła tylko ostatnio wartość wysłaną w next jeśli subject jest complete</p>
-    <button (click)="onReplaySubjectTest()">BehaviorSubject Test</button>
+    <button (click)="onReplaySubjectTest()">AsyncSubject Test</button>
     <hr>
 
 </article>
