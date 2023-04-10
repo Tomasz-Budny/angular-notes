@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AsyncSubject, BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, ReplaySubject, Subject, combineLatest, interval } from 'rxjs';
+import {  map, scan, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs-demo',
@@ -10,6 +11,16 @@ export class RxjsDemoComponent implements OnInit {
 
   subjectTest = new Subject();
   behaviorSubject = new BehaviorSubject(0); // BehaviorSubject musi mieć inital value
+
+  combineLatestDemo = combineLatest([
+    interval(3000).pipe(take(3), map(x => 'A' + x)),
+    interval(4000).pipe(take(3), map(x => 'B' + x)),
+    interval(1500).pipe(take(3), map(x => 'C' + x))
+  ])
+    .pipe(
+      map(([x1, x2, x3]) =>  x1+' '+x2+' '+ x3),
+      scan((acc, curr) => [...acc, curr], []) // Działa podobnie do reduce w js. W tym wypadku tworzy tablicę ze wszystkimi wartościami wyemitowanymi przez ten observable
+  );
 
   ngOnInit() {
     this.subjectTest.next(0);

@@ -23,6 +23,12 @@
         <li>
             <b>Tap</b> - nie robi nic :D. Używa się go do logowania danych na jakimś etapie strumienia albo do robienia takich rzeczy jak odsyłanie do innych kart (routing).
         </li>
+        <li>
+            <b>SwitchMap</b> - Pozwala łączyć observable w jeden wynik. <a href="https://rxmarbles.com/#switchMap">Przykład działania</a>
+        </li>
+        <li>
+            <b>ConcatMap</b> - Również łączy observable, ale nie ignoruje wartości z drugiego observable jeśli zostanie wyemitowana następna w pierszym. Dodatkowo kończy emisje wraz z tym jak drugi observable zostanie ukończony (complete). <a href="https://rxmarbles.com/#concatMap">Przykład działania</a>.
+        </li>
     </ul>
 </article>
 <article>
@@ -30,6 +36,14 @@
     <a href="https://rxmarbles.com/">Interaktywne diagramy pokazujące działanie wybranych operatorów RxJs.</a>
     <br>
     <a href="https://www.youtube.com/watch?v=Byttv3YpjQk">Filmik Morony o najbardziej przydatnych (jego zdaniem) operatorach RxJs.</a>
+</article>
+<article>
+    <h2>Combine Latest</h2>
+    <p>Przykład:</p>
+
+    <p *ngFor="let value of combineLatestDemo | async">
+        {{ value }}
+    </p>
 </article>
 <article>
     <h2>Subject - różne rodzaje</h2>
