@@ -1,6 +1,10 @@
 <h1 class="title">Welcome in Tutorial of Angular</h1>
 
 <div class="container">
+  <app-tutorial-section nameOfSection="RxJs" [isVisible]="true">
+    <app-rxjs-demo></app-rxjs-demo>
+  </app-tutorial-section>
+
   <app-tutorial-section nameOfSection="Testy" [isVisible]="false">
     <app-test></app-test>
   </app-tutorial-section>

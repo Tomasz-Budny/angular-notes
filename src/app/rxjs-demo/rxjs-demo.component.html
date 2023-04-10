@@ -1,0 +1,56 @@
+<h1>RxJs - operatory</h1>
+<article>
+    <h2>Przykładowe operatory</h2>
+    <ul>
+        <li>
+            <b>Share</b> - <a href="https://www.bitovi.com/blog/always-know-when-to-use-share-vs.-sharereplay">artykuł na ten temat</a>, zobaczyć jaka jest różnica między tym a Subject (wiem, że share używa subject'a).
+        </li>
+        <li>
+            <b>ShareReplay</b> - <a href="https://www.bitovi.com/blog/always-know-when-to-use-share-vs.-sharereplay">troche jest również w tym artykule</a> zachowuje się podobnie do BehaviourSubject.
+        </li>
+        <li>
+            <b>of</b> - pozwala stworzyć observable z każdej wartości. 
+        </li>
+        <li>
+            <b>from</b> - pozwala stworzyć observable który będzie wysyłał wartości kolejno zadeklarowane w tablicy które podajemy w metodzie tego operatora.
+        </li>
+    </ul>
+</article>
+<article>
+    <h2>Subject - różne rodzaje</h2>
+    <h3>Subject</h3>
+    <p>podstawowy rodzaj, pozwala dzielić się wartościami/emitować je do wielu obserwatorów.</p>
+
+    <h3>BehaviorSubject
+    </h3>
+    <p>Specjalny rodzaj subjectu który przetrzymuje ostatnio wartość. Po subskrybcji jest ona wysyłana obserwującego.</p>
+    <button (click)="onBehaviorSubjectTest()">BehaviorSubject Test</button>
+    <hr>
+
+    <h3>ReplaySubject
+    </h3>
+    <p>Specjalny rodzaj subjecta. pozwala wysłać określoną ilość zapisanych nexttów/wartości do subsktrybenta który zasubskrybował po tym jak kilka takich wartości zostało wyemitowanych. Możemy również określić jak stare mogą być maksymalnie wartości które chcemy wysłać (zobacz w dokumentacji).</p>
+    <button (click)="onReplaySubjectTest()">BehaviorSubject Test</button>
+    <hr>
+
+    <h3>AsyncSubject
+    </h3>
+    <p>Specjalny rodzaj subjecta, który wysyła tylko ostatnio wartość wysłaną w next jeśli subject jest complete</p>
+    <button (click)="onReplaySubjectTest()">BehaviorSubject Test</button>
+    <hr>
+
+</article>
+<article>
+    <h2>Subject - Testy</h2>
+    <p><a href="https://rxjs.dev/guide/subject">Tutaj zgrabnie są opisane różne rodzaje subjectów</a></p>
+    <div>
+        <div class="bordered-section">
+            <h3>Subject</h3>
+            <p>{{ subjectTest | async }}</p>
+        </div>
+        <div class="bordered-section">
+            <h3>BehaviorSubject</h3>
+            <p>{{ behaviorSubject | async }}</p>
+        </div>
+    </div>
+</article>
