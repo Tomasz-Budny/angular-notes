@@ -60,7 +60,12 @@
             Wartość: {{ object }}
         </p>
     </div>
-    <button (click)="serviceWithSubject.addObject('Tomo')">Dodaj Nowe Tomo</button>
+    <button (click)="serviceWithSubject.addObject('Tomo')">
+        Dodaj Nowe Tomo
+    </button>
+    <button (click)="serviceWithSubject.removeObject('Tomo')">
+        Usuń Tomo
+    </button>
 </article>
 <article>
     <h2>Subject - różne rodzaje</h2>
