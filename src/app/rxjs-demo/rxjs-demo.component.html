@@ -54,6 +54,15 @@
     </p>
 </article>
 <article>
+    <h2>Service with Subject pattern</h2>
+    <div style="background-color: aquamarine;">
+        <p *ngFor="let object of serviceWithSubject.getObjects() | async">
+            Wartość: {{ object }}
+        </p>
+    </div>
+    <button (click)="serviceWithSubject.addObject('Tomo')">Dodaj Nowe Tomo</button>
+</article>
+<article>
     <h2>Subject - różne rodzaje</h2>
     <h3>Subject</h3>
     <p>podstawowy rodzaj, pozwala dzielić się wartościami/emitować je do wielu obserwatorów.</p>

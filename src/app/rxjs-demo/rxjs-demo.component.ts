@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncSubject, BehaviorSubject, ReplaySubject, Subject, combineLatest, interval } from 'rxjs';
 import {  map, scan, take } from 'rxjs/operators';
+import { ServiceWithSubjectPatternService } from './service-with-subject-pattern.service';
 
 @Component({
   selector: 'app-rxjs-demo',
@@ -21,6 +22,10 @@ export class RxjsDemoComponent implements OnInit {
       map(([x1, x2, x3]) =>  x1+' '+x2+' '+ x3),
       scan((acc, curr) => [...acc, curr], []) // Działa podobnie do reduce w js. W tym wypadku tworzy tablicę ze wszystkimi wartościami wyemitowanymi przez ten observable
   );
+
+  constructor(
+    public serviceWithSubject: ServiceWithSubjectPatternService
+  ) {}
 
   ngOnInit() {
     this.subjectTest.next(0);
