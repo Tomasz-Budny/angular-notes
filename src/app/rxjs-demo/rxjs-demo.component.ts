@@ -11,7 +11,7 @@ import { ServiceWithSubjectPatternService } from './service-with-subject-pattern
 export class RxjsDemoComponent implements OnInit {
 
   subjectTest = new Subject();
-  behaviorSubject = new BehaviorSubject(0); // BehaviorSubject musi mieć inital value
+  behaviorSubject = new BehaviorSubject(0); // BehaviorSubject musi mieć initial value
 
   combineLatestDemo = combineLatest([
     interval(3000).pipe(take(3), map(x => 'A' + x)),
