@@ -34,6 +34,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AuthInterceptor } from './http-requests/auth.interceptor';
 import { ModulesComponent } from './modules/modules.component';
 import { RxjsDemoComponent } from './rxjs-demo/rxjs-demo.component';
+import { NgrxDemoComponent } from './ngrx-demo/ngrx-demo.component';
 
 @NgModule({
   declarations: [ // Tutaj deklarujemy moduły jakie mamy
@@ -64,7 +65,8 @@ import { RxjsDemoComponent } from './rxjs-demo/rxjs-demo.component';
     FilterByCategoryPipe,
     HttpRequestsComponent,
     ModulesComponent,
-    RxjsDemoComponent
+    RxjsDemoComponent,
+    NgrxDemoComponent
   ],
   imports: [ // ## IMPORTS - tutaj dodajemy importy do innych modułów
     BrowserModule,
