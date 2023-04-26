@@ -20,5 +20,14 @@
     </p>
 </article>
 <article>
-    <h2>Test store - dodawanie</h2>
+    <h2>Test store - dodawanie/zmiana stanu</h2>
+    <form [formGroup]="comicForm" (ngSubmit)="onSubmit()">
+        <label for="name">Nazwa komiksu</label> <br>
+        <input 
+            type="text"
+            formControlName="name"
+            id="name">
+        <br>
+        <button type="submit">Dodaj komiks</button>
+    </form>
 </article>
