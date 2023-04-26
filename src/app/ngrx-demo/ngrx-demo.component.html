@@ -3,4 +3,13 @@
     <p>
         Narzędzie to zostało stworzone przez część angular teamu do zarządzania stanem w profesjonalnych/dużych aplikacjach.
     </p>
+    <p>
+        Jest zbliżone działaniem do Reactowego Reduxa - w zasadzie jest to ten sam koncept. NgRx jest po prostu implementacją schematu jakim jest Redux, zrobioną przez angular team, i zintegrowaną właśnie z tym frameworkiem, jednak, jeżeli chcemy, można używać biblioteki Redux do zarządzania stanem - ngRx nie jest narzucony.
+        <br>
+        Ogólna idea jest taka, że mamy jeden js'owy obiekt, tzw. Store, który przetrzymuję informacje na temat wszystkich stanów w aplikacji. 
+        <br>
+        Komponenty oraz serwisy otrzymują takie dane bezpośrednio od tego Store'a natomiast jeśli chcą go przekazać muszą wysłać go przy pomocy kolejnego js'owego obiektu Action który to skolei przekazuje go jeszcze dalej do Reducer'a. Ten łączy dane stany a następnie przysyła je bezpośrednio do Store'a.
+        <br>
+        Nie wiem na jakim etapie ta informacja będzie potrzebna ale: Reducery wykonują tylko synchroniczny kod!
+    </p>
 </article>
