@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { containsOnlyLowerCaseLetters, doesntHaveAnyPolishProfanities, NickisUnique } from './custom-validators';
 
 @Component({
@@ -14,6 +14,16 @@ export class ReactiveFormsComponent implements OnInit {
   nestedFormGroups: FormGroup;
   formArraytest: FormGroup;
   formCustomValidators: FormGroup;
+
+  // Form builder example
+  fbTest = this.fb.group({
+    name: [null, [Validators.required]], // wartość, tablica walidatorów/ew. jeden walidator
+    surname: ['jebanie', Validators.maxLength(69)]
+  });
+
+  constructor(
+    private fb: FormBuilder // aby korzystać z fb trzeba go na początku zadeklarować w konstruktorze
+  ) {}
 
   ngOnInit(): void {
     this.testReactiveForm = new FormGroup({
