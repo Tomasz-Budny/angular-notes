@@ -12,14 +12,16 @@ const initialState = {
 };
 
 export function TestReducer(
-    state = initialState, 
+    state = initialState,
     action: TestActions.AddComic
-    ) {
-    switch(action.type) {
+) {
+    switch (action.type) {
         case TestActions.ADD_COMIC:
             return {
                 ...state, // jeśli mamy inne pola musimy pamiętać aby je również skopiować. Idealnie nadaję się do tego ta składnia (spread operator)
-                comics: [...state.comics, action.payload] 
-            }
-    }
+                comics: [...state.comics, action.payload]
+            };
+        default:
+            return state;
+    }  
 }

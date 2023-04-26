@@ -35,6 +35,8 @@ import { AuthInterceptor } from './http-requests/auth.interceptor';
 import { ModulesComponent } from './modules/modules.component';
 import { RxjsDemoComponent } from './rxjs-demo/rxjs-demo.component';
 import { NgrxDemoComponent } from './ngrx-demo/ngrx-demo.component';
+import { StoreModule } from '@ngrx/store';
+import { TestReducer } from './ngrx-demo/store/test.reducer';
 
 @NgModule({
   declarations: [ // Tutaj deklarujemy moduły jakie mamy
@@ -74,6 +76,7 @@ import { NgrxDemoComponent } from './ngrx-demo/ngrx-demo.component';
     FormsModule, // Potrzebne do formularzy Template Driven
     ReactiveFormsModule, // Potrzebne do formularzy Reactive
     HttpClientModule, // potrzebne do działania usług http
+    StoreModule.forRoot({test: TestReducer}), // potrzebny do działania Store'ów w ngrx
   ],
   providers: [CounterService, // ## PROVIDERS - tutaj dodajemy serwisy
   {

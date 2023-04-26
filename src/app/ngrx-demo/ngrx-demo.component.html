@@ -13,3 +13,12 @@
         Nie wiem na jakim etapie ta informacja będzie potrzebna ale: Reducery wykonują tylko synchroniczny kod!
     </p>
 </article>
+<article>
+    <h2>Test prostego "serwisu?"/store - wyświetlanie</h2>
+    <p *ngFor="let comic of (comics$ | async)">
+        {{ comic }}
+    </p>
+</article>
+<article>
+    <h2>Test store - dodawanie</h2>
+</article>
