@@ -3,7 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AddComic, DeleteComic } from './store/test.actions';
+import { AddComic, DeleteComic, UpdateComic } from './store/test.actions';
+import { Comic, UpdatedComic } from './comic.model';
 
 @Component({
   selector: 'app-ngrx-demo',
@@ -12,15 +13,19 @@ import { AddComic, DeleteComic } from './store/test.actions';
 })
 export class NgrxDemoComponent implements OnInit{
   //comics$: Observable<{comics: string[]}>;
-  comics$: Observable<string[]>;
+  comics$: Observable<Comic[]>;
 
   // form
   comicForm = this.fb.group({
-    name: [null, [Validators.required, Validators.maxLength(20)]]
+    name: [null, [Validators.required, Validators.maxLength(20)]],
+    rate: [null, [Validators.required, 
+                  Validators.min(0),
+                  Validators.max(5)]],
+    
   });
 
   constructor(
-    private store: Store<{test: {comics: string[]}}>,
+    private store: Store<{test: {comics: Comic[]}}>,
     private fb: FormBuilder
   ) {}
 
@@ -32,11 +37,18 @@ export class NgrxDemoComponent implements OnInit{
   onSubmit() {
     if(this.comicForm.valid) {
       const comicName = this.comicForm.value.name;
-      this.store.dispatch(new AddComic(comicName));
+      const comicRate = this.comicForm.value.rate;
+      const newComic = new Comic(comicName, comicRate);
+
+      this.store.dispatch(new AddComic(newComic));
     }
   }
 
-  deleteComic(comic: string) {
-    this.store.dispatch(new DeleteComic(comic));
+  deleteComic(index: number) {
+    this.store.dispatch(new DeleteComic(index));
+  }
+
+  updateComic(updatedComic: UpdatedComic) {
+    this.store.dispatch(new UpdateComic(updatedComic));
   }
 }

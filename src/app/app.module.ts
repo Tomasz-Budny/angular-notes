@@ -37,6 +37,7 @@ import { RxjsDemoComponent } from './rxjs-demo/rxjs-demo.component';
 import { NgrxDemoComponent } from './ngrx-demo/ngrx-demo.component';
 import { StoreModule } from '@ngrx/store';
 import { TestReducer } from './ngrx-demo/store/test.reducer';
+import { ComicComponent } from './ngrx-demo/comic/comic.component';
 
 @NgModule({
   declarations: [ // Tutaj deklarujemy moduły jakie mamy
@@ -68,7 +69,8 @@ import { TestReducer } from './ngrx-demo/store/test.reducer';
     HttpRequestsComponent,
     ModulesComponent,
     RxjsDemoComponent,
-    NgrxDemoComponent
+    NgrxDemoComponent,
+    ComicComponent
   ],
   imports: [ // ## IMPORTS - tutaj dodajemy importy do innych modułów
     BrowserModule,

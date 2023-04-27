@@ -16,11 +16,13 @@
 <article>
     <h2>Test prostego "serwisu?"/store - wyświetlanie</h2>
 
-    <ng-container *ngFor="let comic of (comics$ | async)">
-        <div class="comic">
-            <p>{{ comic }}</p>
-            <button (click)="deleteComic(comic)">Delete</button>
-        </div>
+    <ng-container *ngFor="let comic of (comics$ | async); let i = index">
+        <app-comic
+            [comic]="comic"
+            [index]="i"
+            (delete)="deleteComic($event)"
+            (update)="updateComic($event)">
+        </app-comic>
     </ng-container >
 
 </article>
@@ -32,6 +34,12 @@
             type="text"
             formControlName="name"
             id="name">
+        <br>
+        <label for="name">Ocena</label> <br>
+        <input 
+            type="number"
+            formControlName="rate"
+            id="rate">
         <br>
         <button type="submit">Dodaj komiks</button>
     </form>

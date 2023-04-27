@@ -1,0 +1,20 @@
+<div class="comic" *ngIf="!updateMode">
+  <p>{{ comic.name }}</p>
+  <p>Ocena: <b>{{ comic.rate }}</b></p>
+  <button (click)="deleteComic(index)">Delete</button>
+  <button (click)="updateMode = true">Update</button>
+</div>
+<div class="comic update" *ngIf="updateMode">
+  <form [formGroup]="updateForm">
+    <input 
+      type="text"
+      formControlName="name">
+    <p>Ocena: </p>
+    <input 
+      type="number"
+      formControlName="rate">
+  </form>
+
+  <button (click)="updateMode = false">Cancel</button>
+  <button (click)="updateComic()">Accept</button>
+</div>
