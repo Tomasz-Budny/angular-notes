@@ -15,9 +15,14 @@
 </article>
 <article>
     <h2>Test prostego "serwisu?"/store - wyświetlanie</h2>
-    <p *ngFor="let comic of (comics$ | async)">
-        {{ comic }}
-    </p>
+
+    <ng-container *ngFor="let comic of (comics$ | async)">
+        <div class="comic">
+            <p>{{ comic }}</p>
+            <button (click)="deleteComic(comic)">Delete</button>
+        </div>
+    </ng-container >
+
 </article>
 <article>
     <h2>Test store - dodawanie/zmiana stanu</h2>

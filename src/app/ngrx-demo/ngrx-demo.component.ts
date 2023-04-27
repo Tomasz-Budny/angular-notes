@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AddComic } from './store/test.actions';
+import { AddComic, DeleteComic } from './store/test.actions';
 
 @Component({
   selector: 'app-ngrx-demo',
@@ -16,7 +16,7 @@ export class NgrxDemoComponent implements OnInit{
 
   // form
   comicForm = this.fb.group({
-    name: [null, [Validators.required, Validators.maxLength(8)]]
+    name: [null, [Validators.required, Validators.maxLength(20)]]
   });
 
   constructor(
@@ -34,5 +34,9 @@ export class NgrxDemoComponent implements OnInit{
       const comicName = this.comicForm.value.name;
       this.store.dispatch(new AddComic(comicName));
     }
+  }
+
+  deleteComic(comic: string) {
+    this.store.dispatch(new DeleteComic(comic));
   }
 }

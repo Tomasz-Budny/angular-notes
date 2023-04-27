@@ -1,0 +1,12 @@
+.comic {
+  display: flex;
+  align-items: center;
+  border: 1px solid green;
+  padding: 3px;
+  margin-bottom: 10px;
+}
+
+.comic p {
+  margin: auto 0px;
+  padding-right: 10px;
+}
