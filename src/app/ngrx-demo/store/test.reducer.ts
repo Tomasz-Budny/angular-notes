@@ -3,8 +3,16 @@
 import { Comic } from "../comic.model";
 import * as TestActions from "./test.actions";
 
+export interface AppState {
+    test: State
+}
+
+export interface State {
+    comics: Comic[]
+}
+
 // możemy ustalić initial state 
-const initialState = {
+const initialState: State = {
     comics: [
         new Comic("Bondoman II", 4.5),
         new Comic("Amusing Spooderman", 3.2)

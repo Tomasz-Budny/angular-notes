@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AddComic, DeleteComic, UpdateComic } from './store/test.actions';
 import { Comic, UpdatedComic } from './comic.model';
+import * as fromTestList from './store/test.reducer';
 
 @Component({
   selector: 'app-ngrx-demo',
@@ -25,7 +26,8 @@ export class NgrxDemoComponent implements OnInit{
   });
 
   constructor(
-    private store: Store<{test: {comics: Comic[]}}>,
+    //private store: Store<{test: {comics: Comic[]}}>,
+    private store: Store<fromTestList.AppState>,
     private fb: FormBuilder
   ) {}
 
