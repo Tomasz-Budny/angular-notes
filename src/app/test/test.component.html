@@ -5,6 +5,15 @@
     <svg-icon name="doctor"></svg-icon>
     
 </article>
+
+<article>
+    <h2>Responsywność w angularze</h2>
+
+    <span *ngIf="sectionIsVisible">
+        To pole zniknie na odpowiedniej rozdzielczości
+    </span>
+</article>
+
 <article>
     <div *ngFor="let subscriber of subscribers">
         <app-inner-test [title]="subscriber.name"></app-inner-test>

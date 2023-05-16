@@ -39,6 +39,7 @@ import { StoreModule } from '@ngrx/store';
 import { TestReducer } from './ngrx-demo/store/test.reducer';
 import { ComicComponent } from './ngrx-demo/comic/comic.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import {LayoutModule} from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [ // Tutaj deklarujemy moduły jakie mamy
@@ -81,6 +82,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     HttpClientModule, // potrzebne do działania usług http
     StoreModule.forRoot({test: TestReducer}), // potrzebny do działania Store'ów w ngrx
     AngularSvgIconModule.forRoot(), // POtrzebne do działania svg-icon
+    LayoutModule, // Pozwala używać metod z breakpointowaniem strony przez angulara. Aby działało musimy zainstalować @angular/cdk@[wersja].0.0
+    
   ],
   providers: [CounterService, // ## PROVIDERS - tutaj dodajemy serwisy
   {
