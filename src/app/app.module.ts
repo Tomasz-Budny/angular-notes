@@ -38,6 +38,7 @@ import { NgrxDemoComponent } from './ngrx-demo/ngrx-demo.component';
 import { StoreModule } from '@ngrx/store';
 import { TestReducer } from './ngrx-demo/store/test.reducer';
 import { ComicComponent } from './ngrx-demo/comic/comic.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   declarations: [ // Tutaj deklarujemy moduły jakie mamy
@@ -79,6 +80,7 @@ import { ComicComponent } from './ngrx-demo/comic/comic.component';
     ReactiveFormsModule, // Potrzebne do formularzy Reactive
     HttpClientModule, // potrzebne do działania usług http
     StoreModule.forRoot({test: TestReducer}), // potrzebny do działania Store'ów w ngrx
+    AngularSvgIconModule.forRoot(), // POtrzebne do działania svg-icon
   ],
   providers: [CounterService, // ## PROVIDERS - tutaj dodajemy serwisy
   {
