@@ -113,3 +113,17 @@
         </div>
     </div>
 </article>
+<article>
+    <h2>Testy - Confirm Modal</h2>
+    <button (click)="confirmModalService.approve()">
+        TAK
+    </button>
+    <button (click)="confirmModalService.reject()">
+        NIE
+    </button>
+    <div
+        *ngIf="confirm$ | async as vm" 
+        class="response">
+        {{ vm }}
+    </div>
+</article>

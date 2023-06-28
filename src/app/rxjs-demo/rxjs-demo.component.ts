@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AsyncSubject, BehaviorSubject, ReplaySubject, Subject, combineLatest, interval } from 'rxjs';
-import {  map, scan, take } from 'rxjs/operators';
+import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject, Subject, combineLatest, interval, of, throwError } from 'rxjs';
+import {  filter, map, scan, take } from 'rxjs/operators';
 import { ServiceWithSubjectPatternService } from './service-with-subject-pattern.service';
+import { ConfirmModalService } from './confirm-modal.service';
 
 @Component({
   selector: 'app-rxjs-demo',
@@ -13,6 +14,7 @@ export class RxjsDemoComponent implements OnInit {
   subjectTest = new Subject();
   behaviorSubject = new BehaviorSubject(0); // BehaviorSubject musi mieć initial value
 
+
   combineLatestDemo = combineLatest([
     interval(3000).pipe(take(3), map(x => 'A' + x)),
     interval(4000).pipe(take(3), map(x => 'B' + x)),
@@ -23,8 +25,11 @@ export class RxjsDemoComponent implements OnInit {
       scan((acc, curr) => [...acc, curr], []) // Działa podobnie do reduce w js. W tym wypadku tworzy tablicę ze wszystkimi wartościami wyemitowanymi przez ten observable
   );
 
+  confirm$: Observable<string>;
+
   constructor(
-    public serviceWithSubject: ServiceWithSubjectPatternService
+    public serviceWithSubject: ServiceWithSubjectPatternService,
+    public confirmModalService: ConfirmModalService
   ) {}
 
   ngOnInit() {
@@ -35,6 +40,11 @@ export class RxjsDemoComponent implements OnInit {
       this.subjectTest.next(rand);
       this.behaviorSubject.next(rand);
     }, 2000);
+
+    this.confirm$ = this.confirmModalService.getResponse().pipe(
+      filter(res => res),
+      map(res => 'jest gucci')
+    );
   }
 
   onBehaviorSubjectTest() {

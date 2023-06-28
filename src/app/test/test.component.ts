@@ -22,6 +22,7 @@ export class TestComponent implements OnInit {
       ])
       .subscribe(result => {
         this.sectionIsVisible = true;
+        console.log("subscribe triggered");
         if (result.matches) {
           console.log("screens matches customBreakpoint");
           this.sectionIsVisible = false;
